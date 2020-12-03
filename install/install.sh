@@ -281,6 +281,10 @@ sudo apt-get install ntp ntpstat -y || exit 1
 sudo apt-get install xfonts-75dpi -y || exit 1
 sudo dpkg -i ${SELF}/packages/wkhtmltox_0.14-bibbox.deb || exit 1
 
+## Install bibos-client
+sudo apt-get install python-pip -y || exit 1
+sudo pip install bibos-client
+
 ## Clean up
 rm -rf ${DIR}/{Desktop,Downloads,Documents,Music,Pictures,Public,Templates,Videos,examples.desktop}
 sudo apt-get --purge remove avahi-daemon -y || exit 1
