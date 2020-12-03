@@ -276,7 +276,6 @@ sudo apt-get install google-chrome-stable -y || exit 1
 
 ## Fix time synce (aarhus)
 sudo apt-get install ntp ntpstat -y || exit 1
-sudo sh -c "echo 'pool ntp.aarhuskommune.local iburst' >> /etc/ntp.conf"
 
 ## Install wkhtmltopdf
 sudo apt-get install xfonts-75dpi -y || exit 1
