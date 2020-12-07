@@ -14,7 +14,7 @@ cd ~/
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 ## Define the release file.
-VERSION="bibsdb0.5.0"
+VERSION="bibsdb-v1.0-alpha1"
 URL="https://github.com/bibsdb/bibbox/releases/download/${VERSION}/"
 FILE="${VERSION}.tar.gz"
 
