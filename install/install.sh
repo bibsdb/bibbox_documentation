@@ -14,8 +14,8 @@ cd ~/
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 ## Define the release file.
-VERSION="bibsdb-v1.0-alpha1"
-URL="https://github.com/bibsdb/bibbox/releases/download/${VERSION}/"
+VERSION="bibsdb-v1.0-alpha2"
+URL="https://github.com/bibsdb/bibbox/archive/"
 FILE="${VERSION}.tar.gz"
 
 ## Define colors.
@@ -181,7 +181,7 @@ fi
 ## Add bibbox packages (use symlink to match later update process).
 mkdir ${DIR}/${VERSION}/ || exit 1
 wget -q ${URL}${FILE} || exit 1
-tar -zxf ${FILE} -C ${DIR}/${VERSION}/ || exit 1
+tar -zxf ${FILE} --strip-components=1 -C ${DIR}/${VERSION}/ || exit 1
 rm -rf ${URL}${FILE}
 ln -s ${DIR}/${VERSION}/ bibbox
 
