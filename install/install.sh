@@ -182,7 +182,7 @@ fi
 mkdir ${DIR}/${VERSION}/ || exit 1
 wget -q ${URL}${FILE} || exit 1
 tar -zxf ${FILE} --strip-components=1 -C ${DIR}/${VERSION}/ || exit 1
-rm -rf ${URL}${FILE}
+rm -rf ${FILE}
 ln -s ${DIR}/${VERSION}/ bibbox
 
 cp ${SELF}/server.key ${DIR}/bibbox/
