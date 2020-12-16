@@ -183,6 +183,7 @@ mkdir ${DIR}/${VERSION}/ || exit 1
 wget -q ${URL}${FILE} || exit 1
 tar -zxf ${FILE} --strip-components=1 -C ${DIR}/${VERSION}/ || exit 1
 rm -rf ${FILE}
+rm -f bibbox
 ln -s ${DIR}/${VERSION}/ bibbox
 
 cp ${SELF}/server.key ${DIR}/bibbox/
@@ -270,7 +271,7 @@ cp ${SELF}/rc.xml ${DIR}/.config/openbox
 
 ## Add chrome to the box.
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-sudo sh -c "echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' >> /etc/apt/sources.list.d/google-chrome.list"
+sudo sh -c "echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' > /etc/apt/sources.list.d/google-chrome.list"
 sudo apt-get update || exit 1
 sudo apt-get install google-chrome-stable -y || exit 1
 
