@@ -14,7 +14,7 @@ cd ~/
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 ## Define the release file.
-VERSION="bibsdb-v1.2"
+VERSION="bibsdb-v1.9"
 URL="https://github.com/bibsdb/bibbox/archive/"
 FILE="${VERSION}.tar.gz"
 
@@ -225,6 +225,20 @@ sudo sh -c "echo 'MaxJobs 1' >> /etc/cups/cupsd.conf"
 
 # Restart cups
 sudo service cups restart
+
+# Add elo touch driver
+tgtDir="/etc/opt"
+sudo cp -pr ${SELF}/elo ${tgtDir}/elo-usb
+cd ${tgtDir}/elo-usb
+sudo chmod 777 *
+sudo chmod 444 *.txt
+
+# Copy elo udev rules
+sudo cp ${tgtDir}/elo-usb/99-elotouch.rules /etc/udev/rules.d
+
+# Copy and enable the elo.service systemd script
+sudo cp ${tgtDir}/elo-usb/elo.service /etc/systemd/system/
+sudo systemctl enable elo.service
 
 ## Install x-server and openbox.
 sudo apt-get install openbox xinit xterm numlockx -y || exit 1
