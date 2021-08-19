@@ -240,6 +240,31 @@ sudo cp ${tgtDir}/elo-usb/99-elotouch.rules /etc/udev/rules.d
 sudo cp ${tgtDir}/elo-usb/elo.service /etc/systemd/system/
 sudo systemctl enable elo.service
 
+# Shutdown and wakeup
+chmod +x /home/bibbox/install/reboot-if-no-chrome.sh
+
+TCRON=/tmp/oldcron
+HOURS_WEEKDAY=22
+HOURS_WEEKEND=17
+SECONDS_TO_WAKEUP_WEEKDAY=28800 # 8 hours
+SECONDS_TO_WAKEUP_WEEKEND=46800 # 13 hours
+WAKEUP_HOURS=06
+
+# Remove shutdown lines from previous runs
+if [ -f $TCRON ]
+then
+		sed -i -e "/\/rtcwake/d" $TCRON
+		sed -i -e "/cron-logout/d" $TCRON
+fi
+
+# Add rtcwake rules to cron
+echo "00 $HOURS_WEEKDAY * * 1-5 /usr/sbin/rtcwake -m off -s $SECONDS_TO_WAKEUP_WEEKDAY" >> $TCRON
+echo "00 $HOURS_WEEKEND * * 6,0 /usr/sbin/rtcwake -m off -s $SECONDS_TO_WAKEUP_WEEKEND" >> $TCRON
+# Add conditional logout to cron
+echo "15 $WAKEUP_HOURS * * 1-5 /home/bibbox/install/reboot-if-no-chrome.sh" >> $TCRON
+echo "15 $WAKEUP_HOURS * * 6,0 /home/bibbox/install/reboot-if-no-chrome.sh" >> $TCRON
+sudo crontab $TCRON
+
 ## Install x-server and openbox.
 sudo apt-get install openbox xinit xterm numlockx -y || exit 1
 sudo apt-get install lxdm xserver-xorg -y || exit 1
