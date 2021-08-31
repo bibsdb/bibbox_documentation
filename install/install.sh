@@ -269,8 +269,10 @@ fi
 echo "00 $HOURS_WEEKDAY * * 1-5 /usr/sbin/rtcwake -m off -s $SECONDS_TO_WAKEUP_WEEKDAY" >> $TCRON
 echo "00 $HOURS_WEEKEND * * 6,0 /usr/sbin/rtcwake -m off -s $SECONDS_TO_WAKEUP_WEEKEND" >> $TCRON
 # Add conditional logout to cron
-echo "15 $WAKEUP_HOURS * * 1-5 /home/bibbox/install/reboot-if-no-chrome.sh" >> $TCRON
-echo "15 $WAKEUP_HOURS * * 6,0 /home/bibbox/install/reboot-if-no-chrome.sh" >> $TCRON
+echo "15 $WAKEUP_HOURS * * 1-5 /home/bibbox/bibbox/reboot-if-no-chrome.sh" >> $TCRON
+echo "30 $WAKEUP_HOURS * * 1-5 /home/bibbox/bibbox/reboot-if-no-chrome.sh" >> $TCRON
+echo "15 $WAKEUP_HOURS * * 6,0 /home/bibbox/bibbox/reboot-if-no-chrome.sh" >> $TCRON
+echo "30 $WAKEUP_HOURS * * 6,0 /home/bibbox/bibbox/reboot-if-no-chrome.sh" >> $TCRON
 sudo crontab $TCRON
 
 ## Install x-server and openbox.
