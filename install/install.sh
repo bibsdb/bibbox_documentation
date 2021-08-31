@@ -240,21 +240,29 @@ sudo cp ${tgtDir}/elo-usb/99-elotouch.rules /etc/udev/rules.d
 sudo cp ${tgtDir}/elo-usb/elo.service /etc/systemd/system/
 sudo systemctl enable elo.service
 
+# Add bibbox.sonderborg.dk to /etc/hosts to make reboot button work
+HOSTS=/etc/hosts
+if [ -f $HOSTS ]
+then
+		sed -i -e "/\/bibbox/d" $HOSTS
+		echo "127.0.0.1  bibbox.sonderborg.dk" >> $HOSTS
+fi
+
 # Shutdown and wakeup
-chmod +x /home/bibbox/install/reboot-if-no-chrome.sh
+chmod +x /home/bibbox/bibbox/reboot-if-no-chrome.sh
 
 TCRON=/tmp/oldcron
 HOURS_WEEKDAY=22
 HOURS_WEEKEND=17
-SECONDS_TO_WAKEUP_WEEKDAY=28800 # 8 hours
-SECONDS_TO_WAKEUP_WEEKEND=46800 # 13 hours
+SECONDS_TO_WAKEUP_WEEKDAY=28800 # 8 hours. We have to wake at 06.
+SECONDS_TO_WAKEUP_WEEKEND=46800 # 13 hours. We have to wake at 06.
 WAKEUP_HOURS=06
 
 # Remove shutdown lines from previous runs
 if [ -f $TCRON ]
 then
 		sed -i -e "/\/rtcwake/d" $TCRON
-		sed -i -e "/cron-logout/d" $TCRON
+		sed -i -e "/reboot/d" $TCRON
 fi
 
 # Add rtcwake rules to cron
