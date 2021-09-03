@@ -287,7 +287,7 @@ sudo sh -c "sed -i '/# session=\/usr\/bin\/startlxde/c session=\/usr\/bin\/openb
 
 # Ensure chrome is started with openbox.
 mkdir -p ${DIR}/.config/openbox
-cat << DELIM >> ${DIR}/.config/openbox/autostart
+cat > ${DIR}/.config/openbox/autostart << EOF
 # Disalbe screensaver and monitor power managener.
 xset s off
 xset s noblank
@@ -315,7 +315,7 @@ while \${RUN_CHROME}; do
         fi
         /usr/bin/google-chrome --kiosk --no-first-run --disable-translate --disable-gpu --enable-offline-auto-reload 'http://localhost:3010'
 done) &
-DELIM
+EOF
 
 # Set default config for openbox.
 cp ${SELF}/rc.xml ${DIR}/.config/openbox
