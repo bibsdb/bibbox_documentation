@@ -249,14 +249,16 @@ then
 fi
 
 # Shutdown and wakeup
-chmod +x /home/bibbox/bibbox/reboot-if-no-chrome.sh
-
 TCRON=/tmp/oldcron
+REBOOT_SCRIPT=/home/bibbox/install/conditional_reboot.sh
 HOURS_WEEKDAY=22
 HOURS_WEEKEND=17
 SECONDS_TO_WAKEUP_WEEKDAY=28800 # 8 hours. We have to wake at 06.
 SECONDS_TO_WAKEUP_WEEKEND=46800 # 13 hours. We have to wake at 06.
 WAKEUP_HOURS=06
+
+# Make reboot script executable
+chmod +x $REBOOT_SCRIPT
 
 # Remove shutdown lines from previous runs
 if [ -f $TCRON ]
@@ -269,10 +271,10 @@ fi
 echo "00 $HOURS_WEEKDAY * * 1-5 /usr/sbin/rtcwake -m off -s $SECONDS_TO_WAKEUP_WEEKDAY" >> $TCRON
 echo "00 $HOURS_WEEKEND * * 6,0 /usr/sbin/rtcwake -m off -s $SECONDS_TO_WAKEUP_WEEKEND" >> $TCRON
 # Add conditional logout to cron
-echo "15 $WAKEUP_HOURS * * 1-5 /home/bibbox/bibbox/reboot-if-no-chrome.sh" >> $TCRON
-echo "30 $WAKEUP_HOURS * * 1-5 /home/bibbox/bibbox/reboot-if-no-chrome.sh" >> $TCRON
-echo "15 $WAKEUP_HOURS * * 6,0 /home/bibbox/bibbox/reboot-if-no-chrome.sh" >> $TCRON
-echo "30 $WAKEUP_HOURS * * 6,0 /home/bibbox/bibbox/reboot-if-no-chrome.sh" >> $TCRON
+echo "15 $WAKEUP_HOURS * * 1-5 $REBOOT_SCRIPT" >> $TCRON
+echo "30 $WAKEUP_HOURS * * 1-5 $REBOOT_SCRIPT" >> $TCRON
+echo "15 $WAKEUP_HOURS * * 6,0 $REBOOT_SCRIPT" >> $TCRON
+echo "30 $WAKEUP_HOURS * * 6,0 $REBOOT_SCRIPT" >> $TCRON
 sudo crontab $TCRON
 
 ## Install x-server and openbox.
