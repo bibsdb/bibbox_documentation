@@ -14,7 +14,7 @@ cd ~/
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 ## Define the release file.
-VERSION="bibsdb-v1.9"
+VERSION="bibsdb-v1.15"
 URL="https://github.com/bibsdb/bibbox/archive/"
 FILE="${VERSION}.tar.gz"
 
@@ -241,12 +241,8 @@ sudo cp ${tgtDir}/elo-usb/elo.service /etc/systemd/system/
 sudo systemctl enable elo.service
 
 # Add bibbox.sonderborg.dk to /etc/hosts to make reboot button work
-HOSTS=/etc/hosts
-if [ -f $HOSTS ]
-then
-		sed -i -e "/\/bibbox/d" $HOSTS
-		echo "127.0.0.1  bibbox.sonderborg.dk" >> $HOSTS
-fi
+sudo sh -c "sed -i '/bibbox.sonderborg.dk/d' /etc/hosts"
+sudo sh -c "echo '127.0.0.1  bibbox.sonderborg.dk' >> /etc/hosts"
 
 # Shutdown and wakeup
 TCRON=/tmp/oldcron
