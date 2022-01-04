@@ -240,6 +240,13 @@ sudo cp ${tgtDir}/elo-usb/99-elotouch.rules /etc/udev/rules.d
 sudo cp ${tgtDir}/elo-usb/elo.service /etc/systemd/system/
 sudo systemctl enable elo.service
 
+# Unattended upgrades script
+UNATTEDED_UPGRADES_SCRIPT=/home/bibbox/install/apt_periodic_control.sh
+# Make script executable
+chmod +x $UNATTEDED_UPGRADES_SCRIPT
+# Run unattended upgrades script
+sudo sh -c "$UNATTEDED_UPGRADES_SCRIPT"
+
 # Add bibbox.sonderborg.dk to /etc/hosts to make reboot button work
 sudo sh -c "sed -i '/bibbox.sonderborg.dk/d' /etc/hosts"
 sudo sh -c "echo '127.0.0.1  bibbox.sonderborg.dk' >> /etc/hosts"
