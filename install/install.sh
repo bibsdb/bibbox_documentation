@@ -15,7 +15,7 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 ## Define the release file.
 VERSION="bibsdb-v2.0"
-URL="https://github.com/bibsdb/bibbox/releases/download/${VERSION}/"
+URL="https://github.com/bibsdb/bibbox/archive/"
 FILE="${VERSION}.tar.gz"
 
 ## Define colors.
