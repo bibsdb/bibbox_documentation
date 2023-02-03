@@ -14,8 +14,8 @@ cd ~/
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 ## Define the release file.
-VERSION="v2.0.0"
-URL="https://github.com/bibboxen/bibbox/releases/download/${VERSION}/"
+VERSION="bibsdb-v2.0"
+URL="https://github.com/bibsdb/bibbox/releases/download/${VERSION}/"
 FILE="${VERSION}.tar.gz"
 
 ## Define colors.
@@ -316,7 +316,7 @@ sudo apt-get install google-chrome-stable -y || exit 1
 
 ## Fix time synce (aarhus)
 sudo apt-get install ntp ntpstat -y || exit 1
-sudo sh -c "echo 'pool ntp.aarhuskommune.local iburst' >> /etc/ntp.conf"
+# sudo sh -c "echo 'pool ntp.aarhuskommune.local iburst' >> /etc/ntp.conf"
 sudo systemctl enable ntp
 
 ## Send logs into log server
