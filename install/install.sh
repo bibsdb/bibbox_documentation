@@ -14,8 +14,8 @@ cd ~/
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 ## Define the release file.
-VERSION="bibsdb-v1.15"
-URL="https://github.com/bibsdb/bibbox/archive/"
+VERSION="v2.0.0"
+URL="https://github.com/bibboxen/bibbox/releases/download/${VERSION}/"
 FILE="${VERSION}.tar.gz"
 
 ## Define colors.
@@ -36,34 +36,30 @@ then
 		exit
 fi
 
-## Set the IP (if static).
+# Set the IP (if static).
 function set_ip {
  read -p "Enter IP: " IP
- read -p "Netmask (255.255.255.240): " NETMASK
+ read -p "Subnet Mask (28): " SUBNET
  read -p "Gateway (172.16.55.1): " GATEWAY
  read -p "DNS 1 (10.150.4.201): " DNS1
  read -p "DNS 2 (10.150.4.202): " DNS2
 
- NETMASK=${NETMASK:-"255.255.255.240"}
+ SUBNET=${SUBNET:-"28"}
  GATEWAY=${GATEWAY:-"172.16.55.1"}
  DNS1=${DNS1:-"10.150.4.201"}
  DNS2=${DNS2:-"10.150.4.202"}
 
-  sudo cat << DELIM >> ${DIR}/interfaces
-source /etc/network/interfaces.d/*
-
-auto lo
-iface lo inet loopback
-
-auto $1
-iface $1 inet static
-  address ${IP}
-  netmask ${NETMASK}
-  gateway ${GATEWAY}
-  dns-nameservers ${DNS1} ${DNS2}
-DELIM
-  sudo mv interfaces /etc/network/interfaces
-
+ echo "network:
+    ethernets:
+        $1:
+            dhcp4: false
+            addresses: [${IP}/${SUBNET}]
+            routes:
+              - to: default
+                via: ${GATEWAY}
+            nameservers:
+              addresses: [${DNS1},${DNS2}]
+    version: 2" | sudo tee /etc/netplan/01-bibbox-network.yaml > /dev/null
 }
 
 while true; do
@@ -71,9 +67,9 @@ while true; do
     case $yn in
         [Yy]* )
 					echo "${UNDERLINE}${GREEN}Network configuration${RESET}"
-					echo "Ethernet adapters normaly starts with ${RED}enp${RESET} and wireless ${RED}wlp${RESET}."
+					echo "Ethernet adapters normally starts with ${RED}enp${RESET} and wireless ${RED}wlp${RESET}."
 					echo "Select the interface to configure:"
-					INTERFACES=$(ifconfig -s -a | cut -f1 -d" " | tail -n +2)
+					INTERFACES=$(ip -o link show | awk -F': ' '{print $2}' | tail -n +2)
 					INTERFACES+=' Exit'
 					select INTERFACE in ${INTERFACES};
 					do
@@ -96,37 +92,28 @@ while true; do
     esac
 done
 
-## Disable wify
-echo "${BOLD}${RED}Disable WIFI to ensure installation.${RESET}"
-echo "Select WIFI interface to disable:"
-INTERFACES=$(ifconfig -s -a | cut -f1 -d" " | tail -n +2)
-INTERFACES+=' No-wifi'
-select INTERFACE in ${INTERFACES};
-do
-	case ${INTERFACE} in
-		'No-wifi')
-			echo "${UNDERLINE}${RED}You known best!${RESET}"
-			sleep 2s
-			break
-			;;
-		*)
-			sudo sh -c "echo 'iface ${INTERFACE} inet manual' >> /etc/network/interfaces"
-			break
-			;;
-	esac
-
-done
-
 ## Restart network anwait for it to be stable.
 echo "${GREEN}Resetting network connections...${RESET}"
-sudo service networking restart
+sudo netplan apply
+
+## Switch to using resolve.conf from the applied netplan.
+sudo unlink /etc/resolv.conf
+sudo ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
+sudo systemctl restart systemd-resolved.service
 
 ## Ensure system is up-to-date.
+DEBIAN_FRONTEND=noninteractive
+echo "\$nrconf{restart} = 'a';" | sudo tee -a /etc/needrestart/needrestart.conf > /dev/null
 sudo apt-get update || exit 1
 sudo apt-get upgrade -y || exit 1
+sudo apt-get install cloud-init libnetplan0 libudev1 netplan.io udev bash-completion nano iputils-ping -y || exit 1
+
+## Set timezone to "Europe/Copenhagen"
+ln -fs /usr/share/zoneinfo/Europe/Copenhagen /etc/localtime
+dpkg-reconfigure -f noninteractive tzdata
 
 ## Get NodeJS.
-wget -q -O - https://deb.nodesource.com/setup_10.x | sudo bash
+wget -q -O - https://deb.nodesource.com/setup_14.x | sudo bash
 sudo apt-get install nodejs -y || exit 1
 
 ## Install tools.
@@ -186,9 +173,6 @@ rm -rf ${FILE}
 rm -f bibbox
 ln -s ${DIR}/${VERSION}/ bibbox
 
-cp ${SELF}/server.key ${DIR}/bibbox/
-cp ${SELF}/server.crt ${DIR}/bibbox/
-
 ## Supervisor config
 sudo cat << DELIM >> ${DIR}/bibbox.conf
 [program:bibbox]
@@ -208,7 +192,7 @@ sudo systemctl enable supervisor
 sudo systemctl start supervisor
 
 ## Add printer
-sudo apt-get install cups libcups2 -y || exit 1
+sudo apt-get install cups libcups2 libcupsimage2 -y || exit 1
 sudo dpkg -i ${SELF}/epson/*.deb || exit 1
 
 tgtDir="/usr/share/ppd"
@@ -324,21 +308,25 @@ EOF
 cp ${SELF}/rc.xml ${DIR}/.config/openbox
 
 ## Add chrome to the box.
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-sudo sh -c "echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' > /etc/apt/sources.list.d/google-chrome.list"
+curl -sS https://dl-ssl.google.com/linux/linux_signing_key.pub | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/google.gpg > /dev/null
+# sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4EB27DB2A3B88B8B
+sudo sh -c "echo 'deb http://dl.google.com/linux/chrome/deb/ stable main' >> /etc/apt/sources.list.d/google-chrome.list"
 sudo apt-get update || exit 1
 sudo apt-get install google-chrome-stable -y || exit 1
 
 ## Fix time synce (aarhus)
 sudo apt-get install ntp ntpstat -y || exit 1
+sudo sh -c "echo 'pool ntp.aarhuskommune.local iburst' >> /etc/ntp.conf"
+sudo systemctl enable ntp
 
-## Install wkhtmltopdf
-sudo apt-get install xfonts-75dpi -y || exit 1
-sudo dpkg -i ${SELF}/packages/wkhtmltox_0.14-bibbox.deb || exit 1
-
-## Install bibos-client
-sudo apt-get install python-pip -y || exit 1
-sudo pip install bibos-client
+## Send logs into log server
+cat << DELIM >> ${DIR}/10-rsyslog.conf
+*.=err   @@10.215.17.150:28778
+*.=crit  @@10.215.17.150:28778
+*.=alert @@10.215.17.150:28778
+*.=emerg @@10.215.17.150:28778
+DELIM
+sudo mv ${DIR}/10-rsyslog.conf /etc/rsyslog.d/10-rsyslog.conf
 
 ## Clean up
 rm -rf ${DIR}/{Desktop,Downloads,Documents,Music,Pictures,Public,Templates,Videos,examples.desktop}
@@ -346,4 +334,4 @@ sudo apt-get --purge remove avahi-daemon -y || exit 1
 sudo apt-get autoremove -y || exit 1
 
 ## Restart the show
-reboot
+sudo reboot

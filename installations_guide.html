@@ -129,81 +129,72 @@ pre code {
 .right {text-align:right}
 
 </style><style type="text/css">
-body {
-	font-family: "Geneva", Arial, sans-serif;
-	font-size: 13px;
-	margin: 10px;
-}
-
-a, a:visited {
-	color: #09c;
-}
-
-a:hover {
-	color: #336699;
-	text-decoration: none;
-}
-
-h1 {
-	margin: 0px 0px 10px;	
-	font-weight: bold;
-}
-
-h2 {
-	border-bottom: 2px dotted #ccc;
-	margin: 5px 0px 15px;	
-}
-
-h6 {
-	color: #09c;
-}
-
-blockquote {
-	font-family: "Georgia", Courier New, courier, sans-serif;
-	background: #efefef;
-	padding: 5px 10px;
-	border: solid 1px #ddd;
-	margin: 15px;
-	-webkit-border-radius:6px;
-	-moz-border-radius:6px;
-	border-radius:6px;
-	color:  #333;
-	
-}
-
-ul, ol {
-	margin-bottom: 15px;
-}
-
-li {
-	padding: 3px;
-}
-
-
-
-code {
-	background-color: #f1f1f1;
-    color: #336699;
-}
-
-pre {
-	background-color: #f1f1f1;
-}
-
-pre > code {
-	margin: 0px;
-	padding: 5px;
-	border: 0px;
-	background-color: #f1f1f1;
-}
-
-
+body{font-size:14px;line-height:1.6;font-family: Helvetica, arial, freesans, clean, sans-serif;padding: 20px;}
+body>*:first-child{margin-top:0!important;}
+body>*:last-child{margin-bottom:0!important;}
+body a:active {outline: none;}
+body a:hover {text-decoration: underline;}
+body a {color: #4183C4;text-decoration: none;}
+body a.absent{color:#c00;}
+body h1, body h2, h3, h4, h5, h6{margin:20px 0 10px;padding:0;font-weight:bold;-webkit-font-smoothing:antialiased;}
+body h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code{font-size:inherit;}
+body h1{font-size:28px;color:#000;}
+body h2{font-size:24px;border-bottom:1px solid #ccc;color:#000;}
+body h3{font-size:18px;}
+body h4{font-size:16px;}
+body h5{font-size:14px;}
+body h6{color:#777;font-size:14px;}
+body p, blockquote, ul, ol, dl, li, table, pre{margin:15px 0;}
+body hr{background:transparent url('../../images/modules/pulls/dirty-shade.png') repeat-x 0 0;border:0 none;color:#ccc;height:4px;padding:0;}
+body>h2:first-child,>h1:first-child,>h1:first-child+h2,>h3:first-child,>h4:first-child,>h5:first-child,>h6:first-child{margin-top:0;padding-top:0;}
+body h1+p, h2+p, h3+p, h4+p, h5+p, h6+p{margin-top:0;}
+body li p.first{display:inline-block;}
+body ul, ol{padding-left:30px;}
+body ul li>:first-child, ol li>:first-child{margin-top:0;}
+body ul li>:last-child, ol li>:last-child{margin-bottom:0;}
+body dl{padding:0;}
+body dl dt{font-size:14px;font-weight:bold;font-style:italic;padding:0;margin:15px 0 5px;}
+body dl dt:first-child{padding:0;}
+body dl dt>:first-child{margin-top:0;}
+body dl dt>:last-child{margin-bottom:0;}
+body dl dd{margin:0 0 15px;padding:0 15px;}
+body dl dd>:first-child{margin-top:0;}
+body dl dd>:last-child{margin-bottom:0;}
+body blockquote{border-left:4px solid #DDD;padding:0 15px;color:#777;}
+body blockquote>:first-child{margin-top:0;}
+body blockquote>:last-child{margin-bottom:0;}
+body table{padding:0;}
+body table tr{border-top:1px solid #ccc;background-color:#fff;margin:0;padding:0;}
+body table tr:nth-child(2n){background-color:#f8f8f8;}
+body table tr th{font-weight:bold;}
+body table tr th, table tr td{border:1px solid #ccc;text-align:left;margin:0;padding:6px 13px;}
+body table tr th>:first-child, table tr td>:first-child{margin-top:0;}
+body table tr th>:last-child, table tr td>:last-child{margin-bottom:0;}
+body img{max-width:100%;}
+body span.frame{display:block;overflow:hidden;}
+body span.frame>span{border:1px solid #ddd;display:block;float:left;overflow:hidden;margin:13px 0 0;padding:7px;width:auto;}
+body span.frame span img{display:block;float:left;}
+body span.frame span span{clear:both;color:#333;display:block;padding:5px 0 0;}
+body span.align-center{display:block;overflow:hidden;clear:both;}
+body span.align-center>span{display:block;overflow:hidden;margin:13px auto 0;text-align:center;}
+body span.align-center span img{margin:0 auto;text-align:center;}
+body span.align-right{display:block;overflow:hidden;clear:both;}
+body span.align-right>span{display:block;overflow:hidden;margin:13px 0 0;text-align:right;}
+body span.align-right span img{margin:0;text-align:right;}
+body span.float-left{display:block;margin-right:13px;overflow:hidden;float:left;}
+body span.float-left span{margin:13px 0 0;}
+body span.float-right{display:block;margin-left:13px;overflow:hidden;float:right;}
+body span.float-right>span{display:block;overflow:hidden;margin:13px auto 0;text-align:right;}
+body code, tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px;}
+body pre>code{margin:0;padding:0;white-space:pre;border:none;background:transparent;}
+body .highlight pre, pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px;}
+body pre code, pre tt{background-color:transparent;border:none;}
 </style></head>
 <body>
 <h1 id="toc_0">Installationsguide (dansk)</h1>
 
 <p>Denne guide indeholder en kort og en længere gennemgang af, hvordan man installerer BibBox som et SelfCheck system (SC). 
-Denne løsning benytter <a href="https://www.ubuntu.com/download/server">Ubuntu Server 16.04 LTS</a>. 
+Denne løsning benytter <a href="https://www.ubuntu.com/download/server">Ubuntu Server 22.04 LTS</a>. 
 Dette er derfor en gennemgang af installationen af Ubuntu Server og derefter et installations script.</p>
 
 <p>Installationen kræver at man har en internet forbindelse, da det meste at det krævede software automatisk downloads fra Internettet. 
@@ -274,24 +265,20 @@ To hurtige tryk på &quot;<strong>tab</strong>&quot; vil komme med foreslag, hvi
 <h2 id="toc_9">Kort gennemgang</h2>
 
 <ol>
-<li>Install Ubuntu Server</li>
-<li>Vælg sprog <strong>&quot;English&quot;</strong></li>
-<li>Vælg location <strong>&quot;other&quot;</strong>, <strong>&quot;Europe&quot;</strong> og derefter <strong>&quot;Danmark&quot;</strong></li>
-<li>Vælg locales til <strong>&quot;United Kingdom - en_GB.UTF-8&quot;</strong></li>
-<li><strong>&quot;No&quot;</strong> til at automatisk keyboard</li>
-<li>Tryk enter til <strong>&quot;Danish&quot;</strong> og <strong>&quot;Danish&quot;</strong> som layout</li>
-<li>Angiv hostname</li>
-<li>Opret bruger konto &quot;<strong>bibbox</strong>&quot; med tilhørende adgangskode og svar <strong>&quot;Yes&quot;</strong> hvis den spørger efter &quot;Weak password&quot;</li>
-<li><strong>&quot;No&quot;</strong> til at kryptere hjemmemappen</li>
-<li>Vælg tidszone <strong>&quot;Europe/Copenhagen&quot;</strong></li>
-<li>Hvis den spørger til at &quot;umount partitions&quot; svar <strong>&quot;Yes&quot;</strong></li>
-<li>Partition af disken - vælg <strong>&quot;Guided - use entire disk&quot;</strong></li>
-<li>Vælg disk og svar <strong>&quot;Yes&quot;</strong> til at skrive ændringer til disk</li>
-<li>Tryk enter til <strong>&quot;Proxy&quot;</strong>. Derved vælges ingen</li>
-<li>Vælg <strong>&quot;No automatic updates&quot;</strong></li>
-<li>Tab til <strong>&quot;Continue&quot;</strong> med kun &quot;standard system utilities&quot; som valgt software</li>
-<li>Install Grub i master boot record, hvis det kommer op vælg så disken <strong>&quot;sda&quot;</strong></li>
-<li>Færdiggør installationen og genstart</li>
+<li>Vælg punktet &quot;<strong>Try or Install Ubuntu Server</strong>&quot;</li>
+<li>Vælg sprog &quot;<strong>English</strong>&quot;</li>
+<li>Vælg &quot;<strong>Continue without updating</strong>&quot; hvis den spørg efter ny installer</li>
+<li>Vælg &quot;<strong>Danish</strong>&quot; tastatur layout</li>
+<li>Vælg &quot;<strong>Done</strong>&quot;</li>
+<li>Vælg &quot;<strong>Ubuntu Sever (minimized)</strong>&quot; </li>
+<li>Vælg &quot;<strong>Done</strong>&quot; til netværks setup med DHCP</li>
+<li>&quot;<strong>Done</strong>&quot; til proxy</li>
+<li>&quot;<strong>Done</strong>&quot; til mirror og brug det den har fundet</li>
+<li>Vælg &quot;<strong>Done</strong>&quot; til at bruge hele disken</li>
+<li>Udfyld bruger profile og maskine navn og vælg &quot;<strong>Done</strong>&quot;</li>
+<li>Vælg &quot;<strong>Install OpenSSH server</strong>&quot; og vælg &quot;<strong>Done</strong>&quot;</li>
+<li>Vælg &quot;<strong>Done</strong>&quot;</li>
+<li>Når installation er færdig vælg &quot;<strong>Reboot now</strong>&quot;</li>
 <li>Login som <strong>&quot;bibbox&quot;</strong></li>
 <li>Kør &quot;<strong>ifconfig</strong>&quot; og notere MAC adresse</li>
 <li>Indsæt USB nøgle med install scripts - <strong>&quot;sudo mount /dev/sdb1 /media/cdrom&quot;</strong></li>
@@ -301,9 +288,7 @@ To hurtige tryk på &quot;<strong>tab</strong>&quot; vil komme med foreslag, hvi
 <li>Kør scriptet - <strong>&quot;cd /home/bibbox/install&quot;</strong> og <strong>&quot;./install.sh&quot;</strong></li>
 <li>Hvis maskinen ikke er på det rigtig netværk vælg <strong>&quot;n&quot;</strong> til at sætte static IP</li>
 <li>Vælg wireless netkort og slå dette fra. Normalt starter det med <strong>&quot;wlp&quot;</strong></li>
-<li>Hvis den spørger efter password skriv <em>bibbox</em>-brugerens adgangskode. Dette kan ske flere gang under installationen,
-hvis denne tager længere tid end normalt.</li>
-<li>Hvis den spørger om andet end specificeret i vejledningen ovenfor skal der svares &quot;no&quot; i alle tilfælde.</li>
+<li>Hvis den spørger efter password skriv <em>bibbox</em>-brugerens adgangskode. Dette kan ske flere gang under installationen,</li>
 </ol>
 
 <p><strong>Skift til statisk IP</strong></p>
@@ -325,9 +310,9 @@ hvis denne tager længere tid end normalt.</li>
 <h4 id="toc_11">Step 1</h4>
 
 <p>Efter boot op vil den første skærm vise de installationsmuligheder man har fra USB pen&#39;en. 
-Denne skærm kan se forskellig ud alt efter om den er grafisk- eller tekstbaseret. Men lige meget hvad skal man vælge punktet &quot;<strong>Install Ubuntu Server</strong>&quot;.</p>
+Denne skærm kan se forskellig ud alt efter om den er grafisk- eller tekstbaseret. Men lige meget hvad skal man vælge punktet &quot;<strong>Try or Install Ubuntu Server</strong>&quot;.</p>
 
-<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/01.png" alt="Drawing" style="width: 500px; align: center"/></p>
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/00.png" alt="Drawing" style="width: 500px; align: center"/></p>
 
 <hr/>
 
@@ -336,223 +321,110 @@ Denne skærm kan se forskellig ud alt efter om den er grafisk- eller tekstbasere
 <p>Vælg sprog &quot;<strong>English</strong>&quot;. Man kan også vælge danish, da dette ingen betydning har på det endelige system, der er låst ned til kun at køre BibBox SelfCheck (SC) systemet. 
 Resten af denne guide antager at valget er engelsk.</p>
 
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/01.png" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h4 id="toc_13">Step 3</h4>
+
+<p>Alt efter hvor ny din Ubuntu 22.04 installations pen er kan dette billlede kommer frem og her vælges bare &quot;<strong>Continue without updating</strong>&quot;</p>
+
 <p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/02.png" alt="Drawing" style="width: 500px;"/></p>
 
 <hr/>
 
-<h4 id="toc_13">Step 3 (Select your location - 1)</h4>
+<h4 id="toc_14">Step 4 (Layout - 1)</h4>
 
-<p>Vælg din location &quot;<strong>Other</strong>&quot; som land.</p>
+<p>Vælg layout som passer til dit tastatur &quot;<strong>Danish</strong>&quot;</p>
 
 <p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/03.png" alt="Drawing" style="width: 500px;"/></p>
 
 <hr/>
 
-<h4 id="toc_14">Step 4 (Select your location - 2)</h4>
+<h4 id="toc_15">Step 5 (Layout - 2)</h4>
 
-<p>Vælg &quot;<strong>Europe</strong>&quot; som region.</p>
+<p>Du kan vælge at skift &quot;<strong>Variant</strong>&quot;, hvis du har et specielt tastatur eller vælg &quot;<strong>Done</strong>&quot;</p>
 
 <p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/04.png" alt="Drawing" style="width: 500px;"/></p>
 
 <hr/>
 
-<h4 id="toc_15">Step 5 (Select your location - 3)</h4>
+<h4 id="toc_16">Step 6</h4>
 
-<p>Vælg &quot;<strong>Danmark</strong>&quot; som område.</p>
+<p>Vælg &quot;<strong>Ubuntu Sever (minimized)</strong>&quot; som installations type og vælg &quot;<strong>Done</strong>&quot;.</p>
 
 <p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/05.png" alt="Drawing" style="width: 500px;"/></p>
 
 <hr/>
 
-<h4 id="toc_16">Step 6 (Configure locales)</h4>
+<h4 id="toc_17">Step 7 (Automatically detected network)</h4>
 
-<p>Vælg &quot;<strong>United Kingdom - en_GB.UTF-8</strong>&quot; som locale til at basere systemet på.</p>
+<p>Installationen vil nu automatisk finde det tilkoblede netværk (DHCP) og oprette forbindelse til Internettet.</p>
 
 <p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/06.png" alt="Drawing" style="width: 500px;"/></p>
 
 <hr/>
 
-<h4 id="toc_17">Step 7 (Configure the keyboard - 1)</h4>
+<h4 id="toc_18">Step 8 (Configure the network - proxy)</h4>
 
-<p>Her skal man vælge &quot;<strong>No</strong>&quot;, da man ellers skal trykke en række specialtaster for automatisk at finde dit keyboard layout, hvilket er langt mere besværligt.</p>
+<p>Hvis du ikke er bag proxy vælg &quot;<strong>Done</strong>&quot; eller indsæt http/https proxy url.</p>
 
 <p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/07.png" alt="Drawing" style="width: 500px;"/></p>
 
 <hr/>
 
-<h4 id="toc_18">Step 8 (Configure the keyboard - 2)</h4>
+<h4 id="toc_19">Step 9 (Configure the network - mirror)</h4>
 
-<p>Vælg land &quot;<strong>Danish</strong>&quot;, som gerne skulle være valgt på forhånd, ellers find den på listen og tryk enter.</p>
+<p>Bliver automatisk detected, så bare vælg &quot;<strong>Done</strong>&quot;</p>
 
 <p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/08.png" alt="Drawing" style="width: 500px;"/></p>
 
 <hr/>
 
-<h4 id="toc_19">Step 9 (Configure the keyboard - 3)</h4>
+<h4 id="toc_20">Step 10 (Partition disks - 1)</h4>
 
-<p>Vælg igen &quot;<strong>Danish</strong>&quot; medmindre du vil benytte et ikke standard dansk tastatur.</p>
+<p>Til partitionering af disken vælg &quot;<strong>Use entire disk</strong>&quot; for at benytte hele disken.</p>
 
 <p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/09.png" alt="Drawing" style="width: 500px;"/></p>
 
 <hr/>
 
-<h4 id="toc_20">Step 10 (Automatically detected network)</h4>
+<h4 id="toc_21">Step 11 (Profile setup)</h4>
 
-<p>Installationen vil nu automatisk finde det tilkoblede netværk (DHCP) og oprette forbindelse til Internettet.</p>
+<p>Opret superburger på systemet. Det er ikke krævet, at denne bruger hedder &quot;bibbox&quot;, men det er anbefaldet. 
+NB! De efterfølgende scripts skulle tage højde for at andre brugernavne kan bruges. Men dette er ikke testet på nuværende tidspunkt.</p>
 
 <p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/10.png" alt="Drawing" style="width: 500px;"/></p>
 
 <hr/>
 
-<h4 id="toc_21">Step 11 (Configure the network - hostname)</h4>
+<h4 id="toc_22">Step 12 (SSH setup)</h4>
 
-<p>Angiv systemets netværksnavn.</p>
+<p>Vælg &quot;<strong>Install OpenSSH server</strong>&quot; for at have mulighed for fjernadministration og opdateringer af maskinne senere hen.</p>
+
+<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/11.png" alt="Drawing" style="width: 500px;"/></p>
+
+<hr/>
+
+<h4 id="toc_23">Step 13 (Featured Server Snaps)</h4>
+
+<p>Du skal ikke installer nogle extra features, bare vælg &quot;<strong>Done</strong>&quot;.</p>
 
 <p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/12.png" alt="Drawing" style="width: 500px;"/></p>
 
 <hr/>
 
-<h4 id="toc_22">Step 12 (Set up users and passwords - full name)</h4>
+<h4 id="toc_24">Step 14 (Installation/Install complete!)</h4>
 
-<p>Opret superburger på systemet. Det er ikke krævet, at denne bruger hedder &quot;bibbox&quot;, men det er anbefaldet. 
-NB! De efterfølgende scripts skulle tage højde for at andre brugernavne kan bruges. Men dette er ikke testet på nuværende tidspunkt.</p>
-
-<p>Angiv navn: <strong>bibbox</strong></p>
+<p>Den vil nu starte installation og når den er færdig kan man vælge &quot;<strong>Reboot Now</strong>&quot;</p>
 
 <p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/13.png" alt="Drawing" style="width: 500px;"/></p>
 
 <hr/>
 
-<h4 id="toc_23">Step 13 (Set up users and passwords - user name)</h4>
+<h2 id="toc_25">Kørsel af BibBox <em>install.sh</em> script</h2>
 
-<p>Vælg samme navn som i forrige skridt.</p>
-
-<p>Angiv brugernavn: <strong>bibbox</strong></p>
-
-<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/14.png" alt="Drawing" style="width: 500px;"/></p>
-
-<hr/>
-
-<h4 id="toc_24">Step 14 (Set up users and passwords - password)</h4>
-
-<p>Angiv superbrugerens adgangskode - husk at denne skal bruges senere til at sikkerhedsopdatere systemet mm.</p>
-
-<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/15.png" alt="Drawing" style="width: 500px;"/></p>
-
-<hr/>
-
-<h4 id="toc_25">Step 15 (Set up users and passwords - password verify)</h4>
-
-<p>Angiv adgangskoden igen.</p>
-
-<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/16.png" alt="Drawing" style="width: 500px;"/></p>
-
-<hr/>
-
-<h4 id="toc_26">Step 16 (Set up users and passwords - weak password)</h4>
-
-<p>Hvis du har valgt en adgangskode som systemet syntes er for kort eller svagt, vil dette skærmbillede kommer frem. Bare sige &quot;<strong>Yes</strong>&quot; til at acceptere svagt password.</p>
-
-<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/17.png" alt="Drawing" style="width: 500px;"/></p>
-
-<hr/>
-
-<h4 id="toc_27">Step 17 (Set up users and passwords - encrypt)</h4>
-
-<p>Vælg &quot;<strong>No</strong>&quot; til at kryptere hjemmemappen for brugeren.</p>
-
-<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/18.png" alt="Drawing" style="width: 500px;"/></p>
-
-<hr/>
-
-<h4 id="toc_28">Step 18 (Configure the Clock)</h4>
-
-<p>Hvis der er forbindelse til Internettet (NTP) vil der være valgt &quot;<strong>Europe/Copenhagen</strong>&quot; som tidszone. Ellers vælg den på listen.</p>
-
-<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/19.png" alt="Drawing" style="width: 500px;"/></p>
-
-<hr/>
-
-<h4 id="toc_29">Step 19 (Partition disks - 1)</h4>
-
-<p>Hvis den spørger om den skal unmount partitioner så vælg &quot;<strong>Yes</strong>&quot; til at umount dem.</p>
-
-<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/20.png" alt="Drawing" style="width: 500px;"/></p>
-
-<hr/>
-
-<h4 id="toc_30">Step 20 (Partition disks - 2)</h4>
-
-<p>Til partitionering af disken vælg &quot;<strong>Guided - use entire disk</strong>&quot; for at benytte hele disken.</p>
-
-<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/21.png" alt="Drawing" style="width: 500px;"/></p>
-
-<hr/>
-
-<h4 id="toc_31">Step 21 (Partition disks - 3)</h4>
-
-<p>Vælge hoveddisk, normalt kaldt &quot;<em>sda</em>&quot;, hvis der er flere på listen.</p>
-
-<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/22.png" alt="Drawing" style="width: 500px;"/></p>
-
-<hr/>
-
-<h4 id="toc_32">Step 22 (Partition disks - 4)</h4>
-
-<p>Vælg at skrive ændringer til disken. &quot;<strong>Yes</strong>&quot; for at oprette partitionerne.</p>
-
-<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/23.png" alt="Drawing" style="width: 500px;"/></p>
-
-<hr/>
-
-<h4 id="toc_33">Step 23 (Configure the package manger)</h4>
-
-<p>Vælg ingen proxy ved at trykke &quot;<strong>enter</strong>&quot;.</p>
-
-<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/24.png" alt="Drawing" style="width: 500px;"/></p>
-
-<hr/>
-
-<h4 id="toc_34">Step 24 (Configure tasksel)</h4>
-
-<p>Vi ønsker ikke at benytte automatiske opdateringer, da vi gerne vil have kontrol over softwaren på SC systemet for at sikre det er stabilt.</p>
-
-<p>Så vælg &quot;<strong>No automatic updates</strong>&quot;.</p>
-
-<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/25.png" alt="Drawing" style="width: 500px;"/></p>
-
-<hr/>
-
-<h3 id="toc_35">Step 25 (Software selection)</h3>
-
-<p>Brug tab til at komme til &quot;<strong>Continue</strong>&quot; så vi kun vælger &quot;<strong>standard system utilities</strong>&quot;, som det eneste vi installerer på nuværende tidspunkt.</p>
-
-<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/26.png" alt="Drawing" style="width: 500px;"/></p>
-
-<hr/>
-
-<h4 id="toc_36">Step 26 (Install the GRUB boot loader on a hard disk)</h4>
-
-<p>For at boote systemet op efter installation skal grub installeres på master boot record. 
-Så vælg &quot;<strong>Yes</strong>&quot; til dette. 
-Hvis der er mere end en disk vil den komme og spørge hvilken disk dette vil være - brug disk valgt i step 21, &quot;<strong>sda</strong>&quot; som udgangspunkt.</p>
-
-<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/27.png" alt="Drawing" style="width: 500px;"/></p>
-
-<hr/>
-
-<h4 id="toc_37">Step 27 (Finish the installation)</h4>
-
-<p>Fjern USB installations-pen&#39;en og vælg &quot;<strong>Continue</strong>&quot; hvilket vil genstarte maskinen. 
-Den vil nu være klar til at køre selv-installationen af BibBox softwaren.</p>
-
-<p><img src="https://raw.githubusercontent.com/bibboxen/docs/master/images/28.png" alt="Drawing" style="width: 500px;"/></p>
-
-<hr/>
-
-<h2 id="toc_38">Kørsel af BibBox <em>install.sh</em> script</h2>
-
-<h4 id="toc_39">Step 1</h4>
+<h4 id="toc_26">Step 1</h4>
 
 <p>Log ind som brugeren &quot;<strong>bibbox</strong>&quot; på systemet.</p>
 
@@ -560,7 +432,7 @@ Den vil nu være klar til at køre selv-installationen af BibBox softwaren.</p>
 
 <hr/>
 
-<h4 id="toc_40">Step 2</h4>
+<h4 id="toc_27">Step 2</h4>
 
 <p>Hvis MAC adressen skal benytte til netværks opsætning f.eks. ISE. Så fåes denne ved at køre &quot;<strong>ifconfig</strong>&quot; (se skræmbilledet herunder hvor MAC adressen har en rød streg under)</p>
 
@@ -568,7 +440,7 @@ Den vil nu være klar til at køre selv-installationen af BibBox softwaren.</p>
 
 <hr/>
 
-<h4 id="toc_41">Step 3</h4>
+<h4 id="toc_28">Step 3</h4>
 
 <p>Indsæt USB nøglen med BibBox installations scriptet og mount denne ind i &quot;<strong>/media/cdrom</strong>&quot;. 
 USB nøglen vil normalt komme frem som &quot;<em>sdb1</em>&quot;, men kan hvis der er flere USB nøgler komme som næste bogstav &quot;<em>sdc1</em>&quot;.</p>
@@ -577,7 +449,7 @@ USB nøglen vil normalt komme frem som &quot;<em>sdb1</em>&quot;, men kan hvis d
 
 <hr/>
 
-<h4 id="toc_42">Step 4</h4>
+<h4 id="toc_29">Step 4</h4>
 
 <p>Kopier installationsfolderen med script og drivers ind i hjemmemappen for &quot;<em>bibbox</em>&quot;-brugeren.</p>
 
@@ -585,7 +457,7 @@ USB nøglen vil normalt komme frem som &quot;<em>sdb1</em>&quot;, men kan hvis d
 
 <hr/>
 
-<h4 id="toc_43">Step 5</h4>
+<h4 id="toc_30">Step 5</h4>
 
 <p>Kør installationsscriptet ved at gå ind i mappen install. </p>
 
@@ -593,7 +465,7 @@ USB nøglen vil normalt komme frem som &quot;<em>sdb1</em>&quot;, men kan hvis d
 
 <hr/>
 
-<h4 id="toc_44">Step 6</h4>
+<h4 id="toc_31">Step 6</h4>
 
 <p>Eksekver filen &quot;<em>install.sh</em>&quot; for at påbegynde installations processen af BibBox SC software.</p>
 
@@ -601,7 +473,7 @@ USB nøglen vil normalt komme frem som &quot;<em>sdb1</em>&quot;, men kan hvis d
 
 <hr/>
 
-<h4 id="toc_45">Step 7</h4>
+<h4 id="toc_32">Step 7</h4>
 
 <p>Første skridt i installations scriptet er om du vil benytte en statisk IP adresse eller forsætte med en dynamisk IP. 
 Vi antager her at vi fortsætter med en dynamisk IP (statisk IP kan sættes senere) og vælger derefter at slå WIFI fra på maskinen (normalt start den med &quot;<em>wlp</em>&quot;).</p>
@@ -613,7 +485,7 @@ til åbne netværk og det derved har forstyret hentningen af filer under install
 
 <hr/>
 
-<h4 id="toc_46">Step 8</h4>
+<h4 id="toc_33">Step 8</h4>
 
 <p>Herefter starter installationen med at hente filer og lave de forskellige opsætninger. 
 Dette vil tage en del tid alt efter hastigheden på nettet. 
@@ -630,11 +502,11 @@ som så kan uploade konfigurationen til SC maskinen.</p>
 
 <hr/>
 
-<h1 id="toc_47">Static IP</h1>
+<h1 id="toc_34">Static IP</h1>
 
 <p>Efter installationen kan man åbne en ny terminal og skifte til en statisk IP med scriptet &quot;<em>ip.sh</em>&quot; i &quot;<em>install</em>&quot; mappen.</p>
 
-<h4 id="toc_48">Step 1</h4>
+<h4 id="toc_35">Step 1</h4>
 
 <p>For at få adgang til en terminal skal man trykke &quot;<strong>ctrl+w</strong>&quot; og hurtigt klikke på højre mus tast på den lyse grå baggrund 
 før Google Chrome når at genstarte. Man vil så få en menu (som vist på billedet), hvis man ikke klikker andre steder 
@@ -646,7 +518,7 @@ vil denne være der efter Chrome er kommet frem igen.</p>
 
 <hr/>
 
-<h4 id="toc_49">Step 2</h4>
+<h4 id="toc_36">Step 2</h4>
 
 <p>Den opstartede terminal med Google Chrome i baggrunden.</p>
 
@@ -654,7 +526,7 @@ vil denne være der efter Chrome er kommet frem igen.</p>
 
 <hr/>
 
-<h4 id="toc_50">Step 3</h4>
+<h4 id="toc_37">Step 3</h4>
 
 <p>Gå ind i &quot;<em>install</em>&quot; folderen og kør kommandoen &quot;<strong>./ip.sh</strong>&quot; for at starte scriptet til at skifte til en statisk IP. Scriptet kan bruges til at skifte til DHCP, ved at svare &quot;<strong>y</strong>&quot; til første spørgsmål. Men her antager vi at man svarer &quot;<strong>n</strong>&quot; og &quot;<strong>y</strong>&quot; til næste spørgsmål om at sætte en statisk IP.</p>
 
@@ -662,7 +534,7 @@ vil denne være der efter Chrome er kommet frem igen.</p>
 
 <hr/>
 
-<h4 id="toc_51">Step 4</h4>
+<h4 id="toc_38">Step 4</h4>
 
 <p>Vælg det netkort som man ønsker ændret til statisk IP (normalt på Intel nuc, vil det være &quot;<em>enp3s0</em>&quot;. Billedet herunder passer ikke med en Intel nuc, men en virtual maskine).</p>
 
@@ -670,7 +542,7 @@ vil denne være der efter Chrome er kommet frem igen.</p>
 
 <hr/>
 
-<h4 id="toc_52">Step 5</h4>
+<h4 id="toc_39">Step 5</h4>
 
 <p>Angiv netværksadresser der ønskes brugt, hvis default vil bruges trykker man bare på &quot;<strong>enter</strong>&quot; uden at angive noget for det enkelte valg. Herefter skal man angive &quot;<em>bibbox</em>&quot; brugerens adgangskode for at foretage ændringeren.</p>
 
@@ -678,7 +550,7 @@ vil denne være der efter Chrome er kommet frem igen.</p>
 
 <hr/>
 
-<h4 id="toc_53">Step 6</h4>
+<h4 id="toc_40">Step 6</h4>
 
 <p>Slå WIFI fra ved at vælge det wireless netkort (starter normalt med &quot;<em>wlp</em>&quot;).</p>
 
@@ -686,7 +558,7 @@ vil denne være der efter Chrome er kommet frem igen.</p>
 
 <hr/>
 
-<h4 id="toc_54">Step 7</h4>
+<h4 id="toc_41">Step 7</h4>
 
 <p>Genstart maskinen for at sikre at ændringen slår igennem. Dette gøres ved at skrive &quot;<strong>reboot</strong>&quot; og trykke &quot;<strong>enter</strong>&quot;.</p>
 
