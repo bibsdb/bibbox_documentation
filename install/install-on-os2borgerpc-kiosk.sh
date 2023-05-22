@@ -211,7 +211,7 @@ sudo lpadmin -d bon
 sudo sh -c "echo '' >> /etc/cups/cupsd.conf"
 sudo sh -c "echo 'MaxJobTime 30' >> /etc/cups/cupsd.conf"
 sudo sh -c "echo 'MaxJobs 1' >> /etc/cups/cupsd.conf"
-sudo sh -c "sed -i 's/ErrorPolicy .*/ErrorPolicy abort-job/' /etc/cups/cupsd.conf"
+sudo sh -c "sed -i 's/ErrorPolicy .*/ErrorPolicy retry-job/' /etc/cups/cupsd.conf"
 
 # Restart cups
 sudo service cups restart
