@@ -3,7 +3,7 @@ Description=Invoke Elo service at system startup.
 
 [Service]
 Type=forking
-ExecStart=/etc/opt/elo-usb/loadEloTouchUSB.sh
+ExecStart=/etc/opt/elo-mt-usb/loadEloMultiTouchUSB.sh
 
 [Install]
 WantedBy=graphical.target

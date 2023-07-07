@@ -1,8 +1,8 @@
 #! /bin/sh
 
 mode="776"
-elo_usb_device_path="/dev/elo-usb/"
-elo_usb_configdata_path="/etc/opt/elo-usb/ConfigData/"
+elo_usb_device_path="/dev/elo-mt-usb/"
+elo_usb_configdata_path="/etc/opt/elo-mt-usb/ConfigData/"
 elo_usb_rspfifo="rsp_fifo"
 elo_usb_cmdfifo="cmd_fifo"
 

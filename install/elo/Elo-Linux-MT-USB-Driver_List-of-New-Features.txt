@@ -1,0 +1,576 @@
+================================================================================
+
+                       Elo Touchscreen Linux Driver - MT-USB 
+
+        Intel i686 (32 bit) or AMD64/Intel (64 bit) ARMv7 (32 bit) or ARMv8 (64 bit)
+
+                         List of New Features & Changes
+
+--------------------------------------------------------------------------------     
+
+
+
+
+================================================================================
+
+                                 Version 4.3.0 
+                                November 04, 2022
+                              Elo Touch Solutions
+
+================================================================================
+
+Summary of new features in driver v4.3.0:
+---------------------------------------------------
+
+New features:
+  1. Support new 1-touch Elo PCAP monitors to replace for SAW monitors 
+     (80H84, PID 0x0820, RptId=1, FW: v2.0.0 and v2.0.1)
+     [LINUXMTUSB-62]
+     
+
+
+================================================================================
+
+                                 Version 4.2.0 
+                                March 25, 2022
+                              Elo Touch Solutions
+
+================================================================================
+
+Summary of new features in driver v4.2.0:
+---------------------------------------------------
+
+New features:
+  1. Support new Elo monitors: ILI2521 (PID 0x2910) and ILI2322 (PID 0x2927)
+     [LINUXMTUSB-50]
+     
+  2. Support all VMWare machines: --vm option
+     [LINUXMTUSB-55]
+
+  3. Hot plug/unplug improvements.
+     [LINUXMTUSB-57]
+     
+  4. Improve wake-on-touch performance with CTR-3200 in CTR-2521 emulation mode
+     [LINUXMTUSB-52]
+
+  5. Improve performance with mixed PCAP and non-PCAP multiple monitors
+     [LINUXMTUSB-56]
+
+
+================================================================================
+
+                                 Version 4.1.0 
+                                April 12, 2021
+                              Elo Touch Solutions
+
+================================================================================
+
+Summary of new features in driver v4.1.0:
+---------------------------------------------------
+
+New features:
+  1. Driver: Add support for multiple touch monitors
+     [LINUXMTUSB-5]
+
+  2. MTUSB: Add support PID 0x0865 - ET5503L, EETI CTR-835600
+     [LINUXMTUSB-20]
+     
+  3. MTUSB: Add support PID 0x0820 - Report ID 17 & 18, EETI CTR-835600
+     [LINUXMTUSB-22]
+
+  4. MTUSB: Add support PID 0x0D22 - SiS9519V, CTR-826019
+     [LINUXMTUSB-40]
+
+  5. MTUSB: Add support PID 0x0816 - EETI 80H32 CTR-82532
+     [LINUXMTUSB-44]
+  
+  6. cplcmd: Add support enable/disable beep sound on touch from cplcmd
+     command line interface
+     [LINUXMTUSB-39]
+
+  7. elova utility: Add support for multiple touch monitors
+     [LINUXMTUSB-31]
+
+  8. cpl, cplcmd utilities: Add support for multiple touch monitors
+     [LINUXMTUSB-32]
+     
+Fixed bugs:
+  9. cplcmd, cpl utilities: "Disable/Enable This Touchscreen" sometime not working
+     [LINUXMTUSB-26]
+
+  10. elova utility: Under some conditions, calibration is failed to run on 2nd 
+      consecutive time.
+      [LINUXMTUSB-38]
+
+  11. In ReadMe.txt, add note for "Calibrating the Touchscreen"
+      [LINUXMTUSB-27]
+
+  12. Replace old EULA file (Elo_OEM_&EU_LA.txt) by "GA000068 EULA.pdf"
+      [LINUXMTUSB-46]
+
+  13. New FW of Ilitek monitor PID 2902 cause no touch with Linux MTUSB driver
+      [LINUXMTUSB-47]
+
+    
+
+================================================================================
+
+                                 Version 4.0.0 
+                               September 29, 2020
+                              Elo Touch Solutions
+
+================================================================================
+
+Summary of new features in driver v4.0.0:
+---------------------------------------------------
+
+  1. Fixed problem: No touch on desktop in mtdigitizer mode
+     [LINUXMTUSB-13]
+
+  2. Improvement: implement to support up-to-date multi-touch protocol.
+     Make EloMTUSB compatible to most major current Linux OS
+     [LINUXMTUSB-24]
+
+  3. Set to multi-touch mode by default
+
+  4. Add support for Wayland graphical shell
+     [LINUXMTUSB-19]
+
+  5. Fixed problem: Failed to run on CentOS 7, SLES 11
+     [LINUXMTUSB-18]
+     Note:
+	 For RedHat and its family OS. Please see "readme.txt" in "Installation/STEP III/Update" section 
+	 for more information.
+
+
+
+================================================================================
+
+                                 Version 3.2.0 
+                                April 01, 2020
+                              Elo Touch Solutions
+
+================================================================================
+
+Summary of new features in driver v3.2.0:
+---------------------------------------------------
+
+  1. Added support for ET0702L Touch Pro PCAP products with VID:PID 
+     (0x04e7:0x1080)
+
+  2. Added support for Touch Pro PCAP products with VID:PID 
+     (0x04e7:0x0820) controller model CTR-825184
+
+
+  3. Added support Raspbian and Ubuntu on ARMv8 platform (64 bit)
+
+
+
+
+================================================================================
+
+                                 Version 3.1.0 
+                               November 11, 2019
+                              Elo Touch Solutions
+
+================================================================================
+
+Summary of new features in driver v3.1.0:
+---------------------------------------------------
+
+  1. Added 10-touch support for Touch Pro PCAP products with VID:PID 
+     (0x04e7:0x2902, 0x04e7:0x2903).
+
+  2. Added 40-touch support for Touch Pro PCAP products with VID:PID 
+     (0x04e7:0x0801).
+
+  3. Add driver start date and time to Elo driver log file.
+
+
+
+
+
+===============================================================================
+ 
+                                 Version 3.0.0 
+                               November 15, 2018
+                              Elo Touch Solutions
+
+================================================================================
+
+
+Summary of new features & changes in driver v3.0.0:
+---------------------------------------------------
+
+  1. Added Uinput kernel module support in the MTUSB driver to send touch 
+     related input events directly to the Linux kernel layer. This allows all 
+     the components of the new MTUSB driver to exist in userspace.  
+
+  2. Added support for 3 types of input devices(Absolute Mouse, Single Touch(ST)
+     Digitizer and Multi Touch(MT) Digitizer) in the MTUSB driver, which can be 
+     selected at runtime via driver commandline parameter. The driver startup 
+     script is setup to start as a Single Touch(ST) digitizer. Selecting one of 
+     these input devices changes the type of input events sent by the MTUSB 
+     driver to the Linux kernel.          
+
+  3. The Absolute Mouse input device can be selected using the --absmouse  
+     commandline parameter in the elomtusbd driver binary. Absolute mouse input
+     device sends mouse events corresponding to the primary touch only. In this 
+     mode the MTUSB driver sends BTN_LEFT, ABS_X and ABS_Y input events. This 
+     mode is useful to support legacy applications or older Linux kernels, which 
+     are not aware of ST or MT digitizer devices or digitizer events. Use evtest 
+     application to test the touchscreen in this mode.     
+
+  4. The Single Touch(ST) Digitizer input device can be selected using the 
+     --stdigitizer commandline parameter in the elomtusbd driver binary. ST 
+     digitizer input device sends single touch digitizer events corresponding to
+     the primary touch only. In this mode the MTUSB driver sends BTN_TOUCH, 
+     ABS_PRESSURE, ABS_X and ABS_Y input events. This mode is useful to support 
+     legacy applications or older Linux kernels, which are not aware of MT 
+     digitizer devices or multi touch digitizer events. It can be used to 
+     retrict the number of touches sent to Linux kernel to just one(primary 
+     touch) and avoid triggering multi touch system gestures. Use evtest 
+     application to test the touchscreen in this mode.     
+
+  5. The Multi Touch(MT) Digitizer input device is the default selection and can
+     also be selected using the --mtdigitizer commandline parameter in the 
+     elomtusbd driver binary. MT digitizer input device sends multi touch 
+     digitizer events corresponding to the Linux Multi Touch protocol(Type A 
+     device) . In this mode the MTUSB driver sends ABS_MT_PRESSURE, 
+     ABS_MT_POSITION_X and ABS_MT_POSITION_Y input events. This mode is useful 
+     to support the latest multi touch aware applications or multi touch system 
+     gestures on newer Linux kernels. Please note that the number of touches 
+     reported to the top level application depends on the Linux distribution and 
+     some multi touch events could be filtered to report system level gestures. 
+     Some Linux desktop elements including the mouse pointer may not respond in 
+     this pure multitouch mode, since they listen to mouse or ST digitizer 
+     events only. Use evtest or QT5 multitouch aware applications to test the 
+     touchscreen in this mode.     
+
+  6. Removed the Elo kernel module [elo_mt_input_mod.ko]. This kernel component
+     is no longer needed, since the driver now uses Uinput module to route touch
+     events to the Linux kernel. 
+
+  7. The installation procedure for the current MTUSB driver is very much 
+     simplified compared to the previous MTUSB drivers with Elo kernel 
+     components. Customers do not have to build any driver components from 
+     source code on the target system and hence do not need to have a 
+     development environment installed.
+
+  8. Removed autosizing routine from the driver initialization sequence of SAW 
+     HID touchscreens. 
+
+  9. Updated the value reported for touch status to 1(instead of 3), during 
+     active touch for Elo Single Touch products.
+
+ 10. Updated the Elo logo used in the control panel utility, cpl.   
+
+
+
+Known Issues in driver v3.0.0 :
+-------------------------------
+
+  1. In Fedora 25, the root user cannot execute the calibration utility, elova 
+     due to Xwindows restrictions. However, a normal user with sudo access can 
+     execute elova utility and complete the calibration process.
+
+  2. In Debian 9.3, the commandline control panel application(cplcmd) does not
+     show the controller type string when touchscreen diagnostics option is 
+     selected. Only the firmware version is shown. The workaround for this is to
+     use the cplcmd binary packaged with the previous version of the driver, 
+     MTUSB v2.5.0.
+ 
+  3. Touch input cannot be used to select the various tabs of the motif based 
+     Graphic User Interface(GUI) control panel(cpl) utility. Use a mouse to 
+     select the different tabs. 
+
+  4. During the operation of the GUI control panel utility, a benign error 
+     related to XtGrabPointer failure might be reported in the terminal 
+     console. It will not cause any issues during touchscreen operation.
+
+  5. The GUI control panel Readme button might not be active to open and view
+     the readme file, if some the popular text editors like emacs, gedit, kedit
+     or kate are not installed. The readme file can be opened directly in any 
+     text editor application from the Elo driver path /etc/opt/elo-mt-usb.        
+
+
+
+
+================================================================================
+
+
+================================================================================
+ 
+                                 Version 2.5.0 
+                               February 23, 2018
+                              Elo Touch Solutions
+
+================================================================================
+
+
+Summary of new features & changes in driver v2.5.0:
+---------------------------------------------------
+
+  1. Added TouchPro branding for Elo PCAP products.
+
+  2. Added support for TouchPro PCAP 9200xx products with VID:PID 
+     (0x04e7:0x0090, 0x04e7:0x0091).
+
+  3. Added support for TouchPro PCAP controllers with VID:PID (04e7:080b and 
+     04e7:080c) and 3243L TouchPro PCAP.
+
+  4. Updated support for latest Intellitouch eSAW 3200XX controller firmware. 
+
+
+
+================================================================================
+
+
+================================================================================
+   
+                                 Version 2.4.0 
+                                 July 26, 2017
+                              Elo Touch Solutions
+
+================================================================================
+
+
+Summary of new features & changes in driver v2.4.0:
+---------------------------------------------------
+
+ 1. Added support for 12 touch Intellitouch Pro PCAP products (0x04e7/0x240c).
+ 
+ 2. Added support for 10 & 20 touch IR products (0x1ff7/0x0013).
+ 
+ 3. Added multitouch support for CentOS 6.8 (kernel: 2.6.32-642). 
+
+
+
+================================================================================
+
+
+================================================================================
+ 
+                                 Version 2.3.1 
+                               February 23, 2017
+                              Elo Touch Solutions
+
+================================================================================
+
+
+Summary of new features & changes in driver v2.3.1:
+---------------------------------------------------
+
+ 1. Enhanced support for 1523L SAW(2515-07 non HID) touch monitor, ensuring 
+    touch is aligned out of the box and does not require calibration.  
+
+
+
+================================================================================
+
+
+================================================================================
+ 
+                                 Version 2.3.0 
+                                January 30, 2017
+                              Elo Touch Solutions
+
+================================================================================
+
+
+Summary of new features & changes in driver v2.3.0:
+---------------------------------------------------
+
+ 1. Added support for Elo Intellitouch SAW 3200XX series controllers.
+
+ 2. Added support for all Elo Intellitouch Pro PCAP controllers.
+
+
+
+================================================================================
+
+
+================================================================================
+
+                                Version 2.0.3-b3 
+                                 March 15, 2016
+                              Elo Touch Solutions
+
+================================================================================
+
+
+Summary of new features & changes in driver v2.0.3-b3 :
+-------------------------------------------------------
+
+  1. Added capability to report only Single Touch events(primary touch) to a 
+     multitouch capable Linux kernel (2.6.38 or 3.x.x or 4.x.x) as mouse events.
+     The primary touch events are only reported to the system, while the other 
+     touches are discarded. Enable this capability by uncommenting the code that
+     defines FORCE_SINGLE_TOUCH in elo_mt_input.c kernel module source code and 
+     generate and install a kernel module.
+ 
+     This single touch reporting feature is very useful if some components in 
+     the software stack do not process multitouch events properly or the 
+     applications do not want multitouch events/gestures or to ensure 
+     compatibility with legacy applications that require mouse events.   
+
+  2. Added support for Intellitouch Pro PCAP products 1940L(0x04e7/0x0064), 
+     3201L(0x04e7/0x0067), 3243L(0x04e7/0x240b), PCAP controller(0x04e7/0x2410)
+     and other similar products.
+
+  3. The USB driver log file(EloUsbErrorLog.txt) that was previously located in 
+     the driver folder (/etc/opt/elo-mt-usb/) has been moved to 
+     /var/log/elo-mt-usb/ folder. 
+
+  4. The USB driver configuration file(MT-USBConfigData) that was previously 
+     located in the driver folder (/etc/opt/elo-mt-usb/) has been moved to 
+     /etc/opt/elo-mt-usb/ConfigData folder. 
+
+
+
+================================================================================
+
+
+================================================================================
+
+                                Version 2.0.3-b2 
+                               February 19, 2016
+                              Elo Touch Solutions
+
+================================================================================
+
+Note for ARM Platforms:
+=======================
+This touchscreen driver ported for ARM v7l platform requires a Linux 
+distribution with Xwindows (example: Ubuntu 14.04.3 LTS ARM version). The driver 
+was built and tested using ODROID-XU4 ARM board running Lbuntu 14.04.3 LTS
+(Kernel: 3.10.92+). The driver package already contains a pre-built kernel 
+module elo_mt_input_mod.ko in the driver main folder for Linux kernel 3.10.92+ 
+(ARM v7l) that can be used directly for driver installation. 
+
+
+Summary of new features & changes in driver v2.0.3-b2 :
+-------------------------------------------------------
+
+  1. Added capability to report only Single Touch events(primary touch) to a 
+     multitouch capable Linux kernel (2.6.38 or 3.x.x or 4.x.x) as mouse events.
+     The primary touch events are only reported to the system, while the other 
+     touches are discarded. Enable this capability by uncommenting the code that
+     defines FORCE_SINGLE_TOUCH in elo_mt_input.c kernel module source code and 
+     generate and install a kernel module.
+ 
+     This single touch reporting feature is very useful if some components in 
+     the software stack do not process multitouch events properly or the 
+     applications do not want multitouch events/gestures or to ensure 
+     compatibility with legacy applications that require mouse events.   
+
+  2. Added support for Intellitouch Pro PCAP products 1940L(0x04e7/0x0064), 
+     3201L(0x04e7/0x0067) and other similar products.
+
+
+
+================================================================================
+
+
+================================================================================
+
+                                 Version 2.0.2 
+                                August 28, 2015
+                              Elo Touch Solutions
+
+================================================================================
+
+Summary of new features & changes in driver v2.0.2 :
+----------------------------------------------------
+
+  1. Added single touch support for Accutouch and Intellitouch products based
+     on the 2216, 2218, 2700 and 2701 single touch controllers.
+
+  2. Removed the requirement for controller serial number matching
+     to retrieve data from configuration file.
+
+  3. Fixed an issue in the calibration scheme where untouches used for computing
+     the calibration parameters were not be reported to Linux kernel. This could
+     potentially result in unwanted behavior due to missing untouches in the
+     touch input sequence.
+
+  4. Fixed issues in the graphic and commandline control panel utilities to 
+     display the X-Windows Video Screen number and Controller firmware version
+     number properly.
+
+  5. Added elo.service systemd startup script and instructions to enable elo 
+     driver startup on Linux distributions with systemd init system.
+
+
+
+================================================================================
+
+
+================================================================================
+
+                                 Version 2.0.0
+                               February 20, 2014
+                              Elo Touch Solutions
+
+================================================================================
+
+Summary of new features & changes in driver v2.0.0 :
+----------------------------------------------------
+
+  1. Added support for Intellitouch Plus and iTouch Plus products that provide
+     dual touch capability based on the 2515-07(non HID), 2521(HID) and
+     2515-00(HID) controllers.
+
+  2. Added support for various multitouch PCAP products (2 touch, 4 touch and
+     10 touch controllers).
+
+  3. Added commandline and GUI control panel utilities (cplcmd and cpl).
+
+
+
+================================================================================
+
+
+================================================================================
+
+                                 Version 1.0.0
+                                August 26, 2013
+                              Elo Touch Solutions
+
+================================================================================
+
+Summary of new features & changes in driver v1.0.0 :
+----------------------------------------------------
+
+  1. Added support for Linux Multi Touch protocol to send multitouch events to
+     the Linux kernel(2.6.38 or 3.x.x). The primary touch events are used to
+     generate pointer events(emulation) to work with existing application.
+
+  2. Added support for older Linux kernels(2.6.x) that do not support the new
+     Linux Multi Touch protocol, to send single touch events instead. The
+     primary touch events are only reported to the system, while the other
+     touches are discarded.
+
+  3. Added support for Intellitouch Plus and iTouch Plus products that provide
+     dual touch capability based on the 2515-07 controller.
+
+
+
+Known Issues in driver v1.0.0 :
+-------------------------------
+
+  1. In some older Linux distributions(example: SLES 11, kernel: 2.6.27.x) the
+     pointer is not aligned properly with the touch location, even after
+     calibration.
+
+
+
+
+================================================================================
+
+                       Copyright (c) 2022 Elo Touch Solutions
+
+                              All rights reserved.
+
+================================================================================
+

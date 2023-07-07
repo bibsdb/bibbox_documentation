@@ -7,7 +7,7 @@ set +e
 
 case "$1" in
     start)
-	/etc/opt/elo-usb/loadEloTouchUSB.sh
+	/etc/opt/elo-mt-usb/loadEloMultiTouchUSB.sh
 	;;
     stop)
 	;;

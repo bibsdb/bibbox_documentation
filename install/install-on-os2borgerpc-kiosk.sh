@@ -218,16 +218,16 @@ sudo service cups restart
 
 # Add elo touch driver
 tgtDir="/etc/opt"
-sudo cp -pr ${SELF}/elo ${tgtDir}/elo-usb
-cd ${tgtDir}/elo-usb
+sudo cp -pr ${SELF}/elo ${tgtDir}/elo-mt-usb
+cd ${tgtDir}/elo-mt-usb
 sudo chmod 777 *
 sudo chmod 444 *.txt
 
 # Copy elo udev rules
-sudo cp ${tgtDir}/elo-usb/99-elotouch.rules /etc/udev/rules.d
+sudo cp ${tgtDir}/elo-mt-usb/99-elotouch.rules /etc/udev/rules.d
 
 # Copy and enable the elo.service systemd script
-sudo cp ${tgtDir}/elo-usb/elo.service /etc/systemd/system/
+sudo cp ${tgtDir}/elo-mt-usb/elo.service /etc/systemd/system/
 sudo systemctl enable elo.service
 
 # Add bibbox.sonderborg.dk to /etc/hosts to make reboot button work
