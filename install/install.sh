@@ -109,11 +109,10 @@ sudo apt-get upgrade -y || exit 1
 sudo apt-get install cloud-init libnetplan0 libudev1 netplan.io udev bash-completion nano iputils-ping -y || exit 1
 
 ## Set timezone to "Europe/Copenhagen"
-ln -fs /usr/share/zoneinfo/Europe/Copenhagen /etc/localtime
-dpkg-reconfigure -f noninteractive tzdata
+sudo timedatectl set-timezone Europe/Copenhagen
 
 ## Get NodeJS.
-wget -q -O - https://deb.nodesource.com/setup_14.x | sudo bash
+wget -q -O - https://deb.nodesource.com/setup_18.x | sudo bash
 sudo apt-get install nodejs -y || exit 1
 
 ## Install tools.
@@ -208,8 +207,10 @@ sudo lpadmin -p bon -E -v usb://EPSON/TM-m30 -P /usr/share/ppd/Epson/tm-ba-therm
 sudo lpadmin -d bon
 
 # Lock down queue to max one job.
+sudo sh -c "echo '' >> /etc/cups/cupsd.conf"
 sudo sh -c "echo 'MaxJobTime 30' >> /etc/cups/cupsd.conf"
 sudo sh -c "echo 'MaxJobs 1' >> /etc/cups/cupsd.conf"
+sudo sh -c "sed -i 's/ErrorPolicy .*/ErrorPolicy abort-job/' /etc/cups/cupsd.conf"
 
 # Restart cups
 sudo service cups restart
