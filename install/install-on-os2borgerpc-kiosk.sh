@@ -175,6 +175,9 @@ ln -s ${DIR}/${VERSION}/ bibbox
 cp ${SELF}/server.key ${DIR}/bibbox/
 cp ${SELF}/server.crt ${DIR}/bibbox/
 
+# Copy crypto-keys
+cp -r ${SELF}/certs ${DIR}/bibbox/
+
 
 ## Supervisor config
 sudo cat << DELIM >> ${DIR}/bibbox.conf
